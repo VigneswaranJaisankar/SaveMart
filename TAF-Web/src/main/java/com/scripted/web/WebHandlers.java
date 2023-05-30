@@ -1,6 +1,7 @@
 package com.scripted.web;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,6 +20,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.io.InputStream;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.commons.validator.UrlValidator;
@@ -55,8 +58,12 @@ import com.scripted.dataload.PropertyDriver;
 import com.scripted.generic.FileUtils;
 import com.scripted.selfhealing.SMWebHealer;
 
-//import atu.testrecorder.ATUTestRecorder;
-//import atu.testrecorder.exceptions.ATUTestRecorderException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.commons.io.IOUtils;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
 
 public class WebHandlers {
 //	public static Actions action = new Actions(BrowserDriver.getDriver());
@@ -68,7 +75,7 @@ public class WebHandlers {
 	static String cdir = System.getProperty("user.dir");
 	static SMWebHealer smhealer = new SMWebHealer();
 	private static String currentTimeStamp = null;
-	//public static ATUTestRecorder recorder;
+	// public static ATUTestRecorder recorder;
 	static List<String> headerDetails = new ArrayList<String>();
 	static List<String> spanDetails = new ArrayList<String>();
 	static List<String> paraDetails = new ArrayList<String>();
@@ -467,6 +474,24 @@ public class WebHandlers {
 		}
 
 	}
+	
+	public static Boolean elementDiplayed(WebElement locator) {
+		Boolean value = null;
+		try {
+			By byEle = WebHandlers.webElementToBy(locator);
+			value= locator.isDisplayed();
+			LOGGER.info("Element displayed successfully:- " + locator.getText());
+		} catch (Exception e) {
+			if (smhealer.isShflag() || smhealer.isImpactflag()) {
+				initHeal(e, locator);
+				elementDiplayed(HealdLctr);
+			} else {
+				e.printStackTrace();
+				LOGGER.error("Element not displayed" + "Exception: " + e);
+			}
+		}
+		return value;
+	}
 
 	public static void rightClick(WebElement locator) {
 		try {
@@ -487,6 +512,31 @@ public class WebHandlers {
 				Assert.fail("Error while performing right click " + "Exception: " + e);
 			}
 		}
+	}
+	
+	public static String elementGetValue(WebElement locator) {
+		String value="";
+		try {
+			By byEle = WebHandlers.webElementToBy(locator);
+			WebWaitHelper.waitForPresence(byEle, WebWaitHelper.getElementTimeout(), locator);
+			LOGGER.info("Element value returned properly:- " + locator.getText());
+			value= locator.getAttribute("value");
+		} catch (Exception e) {
+			if (smhealer.isShflag() || smhealer.isImpactflag()) {
+				initHeal(e, locator);
+				objExists(HealdLctr);
+			} else {
+				e.printStackTrace();
+				LOGGER.error("Error occurred while checking whether the object exists " + "Exception :" + e);
+				String err = BrowserDriver
+						.setScrnshoterrmsg("Error occurred while checking whether the object exists:" + locator);
+				JavascriptExecutor js = (JavascriptExecutor) BrowserDriver.getDriver();
+				js.executeScript(err);
+				Assert.fail("Error occurred while checking whether the object exists " + "Exception :" + e);
+			}
+		}
+		return value;
+		
 	}
 
 	public static void objExists(WebElement locator) {
@@ -2203,6 +2253,173 @@ public class WebHandlers {
 		}
 
 		return pdfData;
+	}
+
+	public static void setscreensize() {
+		JavascriptExecutor js = (JavascriptExecutor) BrowserDriver.getDriver();
+		js.executeScript("document.body.style.zoom='100%'");
+	}
+
+	public static void writeExcelSavemart(String excelFilePath, String sheetName, HashMap<String, String> value) {
+
+		try {
+
+			FileInputStream fis = new FileInputStream(excelFilePath);
+
+			XSSFWorkbook workbook = new XSSFWorkbook(fis);
+
+			XSSFSheet sheet = workbook.getSheet(sheetName);
+
+			XSSFRow row;
+
+			XSSFCell cell;
+
+			String TestcaseName = "";
+
+			String Browser = "";
+
+			String Url = "";
+
+			String Startat = "";
+
+			String Duration = "";
+
+			String Status = "";
+
+			String Reason = "";
+
+			String Image = "";
+
+			for (Entry<String, String> string : value.entrySet()) {
+
+				System.out.print(string.getKey() + ": ");
+
+				System.out.println(string.getValue());
+
+				if (string.getKey().contains("TestcaseName")) {
+
+					TestcaseName = string.getValue();
+
+				}
+
+				if (string.getKey().contains("browser")) {
+
+					Browser = string.getValue();
+
+				}
+
+				if (string.getKey().contains("url")) {
+
+					Url = string.getValue();
+
+				}
+
+				if (string.getKey().contains("Startat")) {
+
+					Startat = string.getValue();
+
+				}
+
+				if (string.getKey().contains("status")) {
+
+					Status = string.getValue();
+
+				}
+
+				if (string.getKey().contains("duration")) {
+
+					Duration = string.getValue();
+
+				}
+
+				if (string.getKey().contains("reason")) {
+
+					Reason = string.getValue();
+
+				}
+
+				if (string.getKey().contains("image")) {
+
+					Image = string.getValue();
+
+				}
+
+			}
+
+			int latrow = sheet.getLastRowNum();
+
+			System.out.println("lastroedetails" + TestcaseName + Browser);
+
+			XSSFRow rownew = sheet.createRow(latrow + 1);
+
+			Cell cellnew1 = rownew.createCell(0);
+
+			cellnew1.setCellValue(TestcaseName);
+
+			Cell cellnew2 = rownew.createCell(1);
+
+			cellnew2.setCellValue(Browser);
+
+			Cell cellnew3 = rownew.createCell(2);
+
+			cellnew3.setCellValue(Url);
+
+			Cell cellnew4 = rownew.createCell(3);
+
+			cellnew4.setCellValue(Status);
+
+			Cell cellnew5 = rownew.createCell(4);
+
+			cellnew5.setCellValue(Startat);
+
+			Cell cellnew6 = rownew.createCell(5);
+
+			cellnew6.setCellValue(Duration);
+			
+			if(Image!=null) {
+
+			InputStream inputStream = new FileInputStream(Image);
+
+			byte[] imageBytes = IOUtils.toByteArray(inputStream);
+
+			int pictureureIdx = workbook.addPicture(imageBytes, Workbook.PICTURE_TYPE_PNG);
+
+			XSSFDrawing drawing = (XSSFDrawing) sheet.createDrawingPatriarch();
+
+			XSSFClientAnchor ironManAnchor = new XSSFClientAnchor();
+
+			ironManAnchor.setCol1(6); // Sets the column (0 based) of the first cell.B1
+
+			ironManAnchor.setCol2(7); // Sets the column (0 based) of the Second cell.
+
+			ironManAnchor.setRow1(latrow + 1); // Sets the row (0 based) of the first cell.
+
+			ironManAnchor.setRow2(latrow + 2); // Sets the row (0 based) of the Second cell.
+
+			drawing.createPicture(ironManAnchor, pictureureIdx);
+
+			for (int i = 6; i < 7; i++) {
+
+				sheet.autoSizeColumn(i);
+
+			}
+			}
+			Cell cellnew8 = rownew.createCell(7);
+
+			cellnew8.setCellValue(Reason);
+
+			FileOutputStream out = new FileOutputStream(new File(excelFilePath));
+
+			workbook.write(out);
+
+			out.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
 	}
 
 }

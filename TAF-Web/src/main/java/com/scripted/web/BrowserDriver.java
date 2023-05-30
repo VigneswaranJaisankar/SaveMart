@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -693,10 +694,12 @@ public class BrowserDriver {
 					break;
 					
 				case "edge":
-
 					MsEdgeSettings MsEdgeSettings = new MsEdgeSettings();
 					MsEdgeSettings.setByMsEdgeOptions(p.getFilePath());
-					driver = new EdgeDriver();
+					//driver = new EdgeDriver();
+					lthDriver.set(new EdgeDriver(MsEdgeSettings.setByMsEdgeOptions(p.getFilePath())));
+				    Dimension objdimen = new Dimension(1920, 1080);
+				    getDriver().manage().window().setSize(objdimen);
 					break;
 				}
 				if(getDriver()!=null) {
