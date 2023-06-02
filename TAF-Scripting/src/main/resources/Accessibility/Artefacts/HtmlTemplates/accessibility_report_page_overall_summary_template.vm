@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <title>Accessibility Report</title>
+     <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/bootstrap-table.css">
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/highcharts.js"></script>
+	 <link rel="stylesheet" href="styles/reportstyle.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid zero-padding">
+
+	<header>
+	<figure class="access-logo"></figure>
+	<div class="logo-style">Skriptmate Accessibility Report</div>
+	<div class="row " style="margin:0;padding:1px; background-color: #1ABB9C"> </div>
+	</header>
+	  
+	  <div class=" col-lg-12 col-md-12">
+	   <h4>Overall Summary of Accessibility Violations</h4>
+	  <div>
+	   <div class="panel panel-default overflow-hidden">
+  <div class="panel-body overflow-hidden"> 
+  <div class="col-md-6">
+  		<div class="overall-section-margin">
+				<span class="url-icon"> <i class="far fa-calendar-alt"></i>
+				</span> <span class="url-icon-align"><b>Reviewed On</b></span> <span
+					class="overall-url-icon-colon">:</span> <span class="overall-url-details">
+					$Date</span>
+			</div>
+  		  <h5 class="label-alignment spacer_2"><label>Total Pages Accessed  : <span>$TotalPages</span></label></h5>
+  		  <h5 class="label-alignment"><label>Total Rule Violations : <span>$RuleViolations</span></label></h5>
+          <h5 class="label-alignment"><label>Total Rules Implied : <span>$TotalCount</span></label></h5>
+          <h5 class="label-alignment"><label>Total Accessible Pages : <span>$Passed</span></label></h5>
+          <h5 class="label-alignment"><label>Total Passed Implied Rules : <span>$OverallPassed</span></label></h5>
+        </div>
+      <div class=" col-lg-6 col-md-6 overflow-hidden border-left padding-left-40">
+							
+<div id="container-chart"></div>
+ 
+       <!-- chart html-->
+  
+<div class="container">
+
+<div class="bar1 rectangle " data-value=$criticalCount><span class="label dx-graph-label">Critical</span></div>
+<div class=" bar2 rectangle " data-value="$majorCount"><span class="label dx-graph-label">Major</span> </div>
+<div class="bar3 rectangle " data-value=$minorCount><span class="label dx-graph-label">Minor</span></div>
+
+</div>
+					</div>
+					</div>
+			</div>
+</div>	
+</div>
+  	  
+	 <div class=" col-lg-12 col-md-12 marginB30">
+	  <div class="row spacer_1">
+        <div class="col-md-12 clearfix spacer_2">
+          <table id="accessibility-table" data-striped="true" class="table table-striped table-bordered " cellspacing="0" width="100%">
+            <thead>
+              <tr class="text-center active">
+               <th data-field="ruleNo" class="col-md-2 text-center">Sr No</th>
+                <th data-field="ruleDesc" class="text-center">Analyzed Page Title</th>
+                <th data-field="508" class="text-center">Analyzed Page URL</th>
+                <th data-field="passed" class="text-center">Passed Rules</th>
+                <th data-field="comment" class="col-md-2 text-center">Total Violations on Page</th>
+              </tr>
+            </thead>
+            <tbody>
+                         <tr class="text-left">
+                         #foreach($violation in $violations)
+                         <td data-field="ruleNo"><strong>$velocityCount</strong></td>
+               <td data-field="ruleDesc" class="text-danger text-14">$violation.PageTitle</td>
+               <td data-field="508" class="text-danger text-14">$violation.PageURL</td>
+               <td data-field="passed" class="text-danger text-14">$violation.PassedRules</td>
+               <td data-field="comment" class="text-left"><b>$violation.RuleViolations</b> <a href="$violation.PageSummary">     [view] </a></td>
+             
+              </tr>
+              #end
+              </tbody>
+                      </table>
+         </div>
+      </div>
+	 </div>
+	   
+ <!-- chart --> 
+		<script type="text/javascript">
+		$(function () {
+    
+    Highcharts.setOptions({
+     colors: ['#40E536', '#E55736']
+    });
+    var chart;
+
+    $(document).ready(function() {
+
+        chart = new Highcharts.Chart({
+
+            chart: {
+
+                renderTo: 'container-chart',
+
+                plotBackgroundColor: null,
+
+                plotBorderWidth: null,
+
+                plotShadow: false
+
+            },
+
+            title: {
+
+                text: 'Overall Accessibility Coverage in %'
+
+            },
+ credits: {
+      enabled: false
+  },
+            tooltip: {
+
+                formatter: function() {
+
+                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat( this.percentage,2) +' %';
+
+                }
+
+            },
+
+            plotOptions: {
+
+                pie: {
+
+                    allowPointSelect: true,
+
+                    cursor: 'pointer',
+
+                    dataLabels: {
+
+                        enabled: true,
+
+                        color: '#000000',
+
+                        connectorColor: '#000000',
+
+                        formatter: function() {
+
+                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat( this.percentage,2) +' %';
+
+                        }
+
+                    },
+                    showInLegend: true
+
+                }
+
+            },
+
+            series: [{
+
+                type: 'pie',
+
+                name: 'Browser share',
+
+                data: [
+
+                    ['Pass',$PassPercentage],
+
+                    ['Fail',$FailurePercentage]
+
+                ]
+
+            }]
+
+        });
+
+    });
+});
+
+</script>
+    
+     </div>
+     <div>
+     </div>
+	  
+	  <div class="footer" style="margin-top:30px">
+        <p class="text-center">Copyright &#169; 2019 UST Global. All rights reserved.</p>
+      </div>
+
+	</body>
+</html>

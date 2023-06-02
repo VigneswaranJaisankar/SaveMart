@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Broken Link Validation Dashboard</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/CQ_style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo_sec">
+				<img src="img/sklogo.png" class="logo-size" alt="logo-skrptmate" />
+			</div>
+			<div class="text_sec">
+				<div class="heading1">Broken Link Validation Report</div>
+				<div class="heading2">
+					<span>Executed By:</span><span>{ExecutedBy}</span>
+				</div>
+				<div class="heading2">
+					<span>Execution Time:</span><span>{ExecutedOn}</span>
+				</div>
+			</div>
+		</div>
+		<div class="row section_1">
+			<div class="col-md-6 col-lg-6" style="margin-bottom: 10px;">
+				<h5 class="label-alignment spacer_2">
+					<label>Test Summary:-</label>
+				</h5>
+				<h5 class="label-alignment spacer_2">
+					<label>Application Url: <span>{Application Url}</span></label>
+				</h5>
+				<h5 class="label-alignment">
+					<label>No of Pages Analysed : <span>{Pages}</span></label>
+				</h5>
+				<h5 class="label-alignment">
+					<label>No of Links Scanned : <span>{Links}</span></label>
+				</h5>
+				<h5 class="label-alignment">
+					<label>Total Passed : <span
+						style="color: #45B39D; font-weight: bold">{passcount}</span></label>
+				</h5>
+				<h5 class="label-alignment">
+					<label>Total Failed : <span
+						style="color: #FB5252; font-weight: bold">{failcount}</span></label>
+				</h5>
+
+
+			</div>
+
+			<div class="col-md-6 col-lg-6">
+				<div style="display: block;">
+					<canvas id="myChart">
+                    </canvas>
+				</div>
+			</div>
+		</div>
+		<div class="table_wrap">
+
+			<div>
+				<span class="legend1"><img src="img/pass.png"
+					class="logo-table" alt="Pass" />Pass</span> <span class="legend2"><img
+					src="img/fail.png" class="logo-table1" alt="Fail" />Fail</span>
+			</div>
+			<!-- Land page accordian Start-->
+			{pagebody} 
+		</div>
+	</div>
+	<!-- Land page accordian End-->
+
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/highcharts.js"></script>
+	<script src="scripts/Chart.js"></script>
+	{piechartBody}
+
+</body>
+
+
+</html>

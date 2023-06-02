@@ -1,0 +1,28 @@
+{
+  "Chatbot":{
+  "Scenario":{
+  "Steps":[
+   {
+        "question1": "hi",
+        "answer1": "Hi there, my name is Achelois. You can share your feelings with me. This is strictly between us ;) What do you want me to call you?"
+      },
+      {
+        "question2": "who are you",
+        "answer2": "Think of me as a virtual agent."
+      },
+      {
+        "question3": "where are you from?",
+        "answer3": "I'm from a virtual cosmos."
+      }
+    ]
+  }
+
+  }
+}
+
+
+
+
+ 
+
+ 

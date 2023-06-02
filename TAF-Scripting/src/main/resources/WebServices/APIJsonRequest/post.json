@@ -1,0 +1,4 @@
+{
+    "name": "${user.name}",
+    "job": "${user.job}" 
+}

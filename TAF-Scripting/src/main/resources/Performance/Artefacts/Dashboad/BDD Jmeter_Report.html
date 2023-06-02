@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BDD Jmeter Report</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="css/BDD_style.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.dataTables.min.js"></script>
+
+    <!-- Legends CSS -->
+    <link href="css/legends.css" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="sbadmin2-1.0.7/dist/css/sb-admin-2.css" rel="stylesheet">
+  
+  
+   <!-- JQuery UI style -->
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/jquery-ui.structure.css" rel="stylesheet">
+    <link href="css/jquery-ui.theme.css" rel="stylesheet">
+  
+
+</head>
+<body style="background-color:#ffffff;">
+  <div class="container">
+    <div class="header">
+      <div class="logo_sec">
+        <img src="img/sklogo.png" class="logo-size" alt="logo-skrptmate"/>
+      </div>
+      <div class="text_sec">
+        <div class="heading1">BDD Jmeter Report</div>
+        <div class="heading2"><span>Executed By:</span><span>{Executed By}</span></div>
+        <div class="heading2"><span>Execution Time:</span><span>{Execution Time}</span></div>
+      </div>
+    </div>
+
+    <div class="row section_1"> 
+      <div>
+        <canvas id="mixed-chart" height="90px"></canvas>
+      </div>
+ 
+    </div>
+<div class="table_wrap">
+    <div class="scn_lbl">Scenarios</div>
+    <hr class="underline">
+         <table id="table1" style="width:100%; word-break:break-word;">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Scenario Name</th>
+                    <th>Thread Users</th>
+                    <th>Status</th>
+                    <th>Error%</th>
+                    <th>Average(ms)</th>  
+                </tr>
+            </thead>    
+           {Scenariotbody}
+          </table>
+</div>
+<div class="flot-chart" style="height:200px;display:none;">
+            <div class="flot-chart-content" id="flot-requests-summary" style="height:200px;" />
+        </div> 
+        </div>
+<!-- Modal1-->
+   {detailsModal}
+<!-- Modal2-->
+      
+
+</body>
+
+  <!-- jQuery -->
+  <script src="sbadmin2-1.0.7/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="sbadmin2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+  <!-- Flot Charts JavaScript -->
+  <script src="sbadmin2-1.0.7/bower_components/flot/excanvas.min.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.pie.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.resize.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.canvas.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.time.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.selection.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+  <script src="sbadmin2-1.0.7/bower_components/flot-axislabels/jquery.flot.axislabels.js"></script>
+  <script src="js/jquery.flot.stack.js"></script>
+  <script src="js/hashtable.js"></script>
+  <script src="js/jquery.numberformatter-1.2.3.min.js"></script>
+  <script src="js/curvedLines.js"></script>
+  <script src="js/dashboard-commons.js"></script>
+  {dashBoardjs}
+  <script src="js/graph.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="sbadmin2-1.0.7/dist/js/sb-admin-2.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+
+  <script src="sbadmin2-1.0.7/bower_components/flot/jquery.flot.symbol.js"></script>
+    <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+
+
+<script src="js/Chart.js"></script>
+
+
+<script>
+  new Chart(document.getElementById("mixed-chart"), {
+      type: 'bar',
+      data: {
+        labels: [{scenarioName}],
+        datasets: [{
+            label: "OK",
+            data: [{OkValues}],
+            backgroundColor: ['rgba(26, 187, 156, 0.8)',
+                              'rgba(26, 187, 156, 0.8)',
+                              'rgba(26, 187, 156, 0.8)',
+                              'rgba(26, 187, 156, 0.8)', 
+                              'rgba(26, 187, 156, 0.8)', 
+                              'rgba(26, 187, 156, 0.8)', 
+                              'rgba(26, 187, 156, 0.8)',                 
+          ],
+            borderColor: ['rgba(3, 169, 244, 1)',
+            'rgba(3, 169, 244, 1)',
+            'rgba(3, 169, 244, 1)',
+            'rgba(3, 169, 244, 1)',
+            'rgba(3, 169, 244, 1)',
+            'rgba(3, 169, 244, 1)',
+          ],
+            borderWidth: .5,
+          },
+
+          {
+            label: "KO",
+            data: [{KOValues}],
+            backgroundColor: ['rgba(255, 78, 66, 0.8)',
+            'rgba(255, 78, 66, 0.8)',
+            'rgba(255, 78, 66, 0.8)',
+            'rgba(255, 78, 66, 0.8)',
+            'rgba(255, 78, 66, 0.8)',
+            'rgba(255, 78, 66, 0.8)',
+            'rgba(255, 78, 66, 0.8)'
+        ],
+            borderColor: ['rgba(255, 78, 66, 1)',
+            'rgba(255, 78, 66, 1)',
+            'rgba(255, 78, 66, 1)',
+            'rgba(255, 78, 66, 1)',
+            'rgba(255, 78, 66, 1)',
+            'rgba(255, 78, 66, 1)',
+            'rgba(255, 78, 66, 1)',
+        ],
+            borderWidth: .5,
+          }
+        ]
+      },
+      options: {
+        title: {
+        display: true,
+        text: 'Requests Summary',
+        fontSize: 14,
+        fontColor: '#2a3f54'
+  },
+  legend: {
+      labels: {
+        boxWidth: 20,
+        padding: 10
+    }
+        },
+  scales: {
+    yAxes: [{
+    stacked: true,
+      scaleLabel: {
+        display: true,
+        labelString: 'Values in %',
+      },
+      ticks: {
+        stepSize:10,
+        min: 0,
+        max:100
+            }
+    }],
+    xAxes: [{
+    	stacked: true,
+        ticks: {
+          fontSize:13
+              }
+      }]
+  }  
+       
+      }
+  });
+
+  $( document ).ready(function() {
+    $( "#collapse41,#collapse42" ).removeClass("in");
+   
+}); 
+  
+  
+  </script>
+
+
+
+</html>
+

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatbot Quality Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/CQ_style.css">
+</head><body>
+  <div class="container">
+    <div class="header">
+      <div class="logo_sec">
+        <img src="img/sklogo.png" class="logo-size" alt="logo-skrptmate"/>
+      </div>
+      <div class="text_sec">
+        <div class="heading1">Chatbot Quality Dashboard</div>
+        <div class="heading2"><span>Executed By:</span><span>{ExecutedBy}</span></div>
+        <div class="heading2"><span>Execution Time:</span><span>{ExecutedOn}</span></div>
+      </div>
+    </div>
+<div class="row section_1"> 
+        <div class="col-md-6 col-lg-6" style="margin-bottom: 10px;">
+          <label></label>
+            <div>
+                <div class="box_style1">
+                  <div class="box_1">
+                    <div class="boxlabel1">Accuracy</div>
+                    <div class="boxlabel2">{Accuracyvalue}</div>
+                  </div>
+                  <div class="logo_sec1">
+                    <img src="img/accuracy.png" class="logo-size1" alt="Accuracy"/>
+                  </div>
+                </div> 
+ <div class="box_style2">
+                  <div class="box_1">
+                    <div class="boxlabel1">Speed</div>
+                    <div class="boxlabel2">{Speedvalue}</div>
+                  </div>
+                  <div class="logo_sec1">
+                    <img src="img/speed.png" class="logo-size1" alt="Speed"/>
+                  </div>
+                </div>
+            </div>
+ <div class="btm_box">
+              <div class="box_style3">
+                <div class="box_1">
+                  <div class="boxlabel1">Error Handling</div>
+                  <div class="boxlabel2">{Errorhandlingvalue}</div>
+                </div>
+                <div class="logo_sec1">
+                  <img src="img/errorhandling.png" class="logo-size1" alt="Error Handling"/>
+                </div>
+              </div>
+
+              <div class="box_style4">
+                <div class="box_1">
+                  <div class="boxlabel1">Personalization</div>
+                  <div class="boxlabel2">{Personalizationvalue}</div>
+                </div>
+                <div class="logo_sec1">
+                  <img src="img/personalization.png" class="logo-size1" alt="Personalization"/>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 graph_wrap">
+            
+                <div>
+                    <canvas id="myChart"></canvas>
+                    <div><label>Score :</label><label>{Scorevalue}</label></div>
+                </div>
+        </div>    
+    </div> 
+<div class="table_wrap">
+
+      <div>
+        <span class="legend1"><img src="img/pass.png" class="logo-table" alt="Pass" />Pass</span>
+        <span class="legend2"><img src="img/fail.png" class="logo-table1" alt="Fail" />Fail</span>
+      </div>
+ <!-- Land page accordian Start-->
+<div class="panel-group" id="accordion5">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse50">
+           Accuracy
+        </a>
+        &nbsp;
+        <span class="noti_style2">{AccFailCount}</span>
+        <span class="noti_style1">{AccPassCount}</span>
+      </h4>
+    </div>
+    <div id="collapse50" class="panel-collapse collapse ">
+      <div class="panel-body">
+             {accBody}
+          
+                  <!--    <div class='list'>
+                      <div><img src = 'img/pass.png' class='logo-table1' alt='Pass' /></div>
+                      <div class='text_sec' style='flex:auto;'>
+                      <div class='list_heading1'>Validating the chatbot accuracy</div>
+                      <div class='list_heading2'><span>Duration:</span>&nbsp;&nbsp;<span>0h 0min 7Sec 254ms </span></div>
+                      </div>
+                      <div> <img src = 'img/info.png' class='logo-table2' data-toggle='modal' data-target='#myModal' onclick='displayImage("screenshots/CBFail_20200917_114723.png","Screenshot");' alt='information icon'/></div>            
+                  </div>-->
+      </div>
+    </div>
+  </div>  
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse51">
+          Error Handling
+        </a>
+        <span class="noti_style2">{ErrFailCount}</span>
+        <span class="noti_style1">{ErrPassCount}</span>
+        
+      </h4>
+    </div>
+    <div id="collapse51" class="panel-collapse collapse ">
+      <div class="panel-body">
+	  {errBody}
+        <!--    <div class='list'>
+                      <div><img src = 'img/pass.png' class='logo-table1' alt='Pass' /></div>
+                      <div class='text_sec' style='flex:auto;'>
+                      <div class='list_heading1'>Validating the chatbot accuracy</div>
+                      <div class='list_heading2'><span>Duration:</span>&nbsp;&nbsp;<span>0h 0min 7Sec 254ms </span></div>
+                      </div>
+                      <div> <img src = 'img/info.png' class='logo-table2' data-toggle='modal' data-target='#myModal' onclick='displayImage("screenshots/CBFail_20200917_114723.png","Screenshot");' alt='information icon'/></div>            
+                  </div>-->
+        
+      </div>
+    </div>
+  </div> 
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse52">
+           Speed
+        </a>
+        <span class="noti_style2">{SpeedFailCount}</span>
+        <span class="noti_style1">{SpeedPassCount}</span>
+      </h4>
+    </div>
+    <div id="collapse52" class="panel-collapse collapse ">
+      <div class="panel-body">
+	  {speedBody}
+        <!--    <div class='list'>
+                      <div><img src = 'img/pass.png' class='logo-table1' alt='Pass' /></div>
+                      <div class='text_sec' style='flex:auto;'>
+                      <div class='list_heading1'>Validating the chatbot accuracy</div>
+                      <div class='list_heading2'><span>Duration:</span>&nbsp;&nbsp;<span>0h 0min 7Sec 254ms </span></div>
+                      </div>
+                      <div> <img src = 'img/info.png' class='logo-table2' data-toggle='modal' data-target='#myModal' onclick='displayImage("screenshots/CBFail_20200917_114723.png","Screenshot");' alt='information icon'/></div>            
+                  </div>-->
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapse53">
+          Personalization
+        </a>
+        <span class="noti_style2">{PerFailCount}</span>
+        <span class="noti_style1">{PerPassCount}</span>
+      </h4>
+    </div>
+    <div id="collapse53" class="panel-collapse collapse ">
+      <div class="panel-body">
+	  {perBody}
+        <!--    <div class='list'>
+                      <div><img src = 'img/pass.png' class='logo-table1' alt='Pass' /></div>
+                      <div class='text_sec' style='flex:auto;'>
+                      <div class='list_heading1'>Validating the chatbot accuracy</div>
+                      <div class='list_heading2'><span>Duration:</span>&nbsp;&nbsp;<span>0h 0min 7Sec 254ms </span></div>
+                      </div>
+                      <div> <img src = 'img/info.png' class='logo-table2' data-toggle='modal' data-target='#myModal' onclick='displayImage("screenshots/CBFail_20200917_114723.png","Screenshot");' alt='information icon'/></div>            
+                  </div>-->
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+ <!-- Land page accordian End-->
+ 
+  </div>
+ <!-- Modal1 Details-->
+ {accmodel}
+ {errModel}
+ {speedModel}
+ {perModel}
+ 
+
+<!-- Modal1 Details End-->
+
+
+
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+        <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+{speedoMeter}
+
+<script>
+  new Chart(document.getElementById("line-chart"), {
+type: 'line',
+data: {
+  labels: ["Run1","Run2","Run3","Run4","Run5"],
+  datasets: [{ 
+      
+      label: "Accuracy",
+      backgroundColor: '#3e95cd',
+      borderColor: "#3e95cd",
+      fill: false, data: [0.0,0.0,0.0,0.0,0.0,]}, { 
+      
+      label: "Speed",
+      backgroundColor: '#8e5ea2',
+      borderColor: "#8e5ea2",
+      fill: false,
+	  data: [2.0,1.0,1.0,0,0,] }, { 
+      
+      label: "ErrorHandling",
+      backgroundColor: '#3cba9f',
+      borderColor: "#3cba9f",
+      fill: false,
+	  data: [1.0,0,0,0,0,] }, { 
+      
+      label: "Personalization",
+      backgroundColor: '#e8c3b9',
+      borderColor: "#e8c3b9",
+      fill: false,
+	  data: [0,0,0,0,0,] }
+  ]
+},
+options: {
+  title: {
+    display: true,
+    text: 'ChatBot Trend (per run)',
+    fontSize: 16,
+  },
+  legend: {
+      labels: {
+        boxWidth: 20,
+        padding: 10
+    }
+        },
+  scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'score'
+      }
+    }],
+    xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Last 5 Executions',
+        fontStyle: 'bold',
+      }
+     
+    }]
+  }     
+
+}
+
+});
+</script>
+</html>

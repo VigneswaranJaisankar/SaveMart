@@ -1,0 +1,82 @@
+
+.container {
+   background: #FFF;
+    width: 180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+}
+
+.bar {
+  height: 10px;
+}
+
+.bar1 {
+  background-color: #25A2F1;
+  
+}
+
+.bar2 {
+  background-color: #3FC775;
+  margin-left: 4em;
+  
+}
+
+.bar3 {
+  background-color: #F5D546;
+  margin-left: 3.4em;
+  
+}
+
+.dx-graph-label{
+	color: black;
+	padding: 0 0 0 0;
+}
+   .value {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(78 78 78 / 96%);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1;
+	margin-top: -30px;
+    margin-left: -66px;
+      }
+	  
+	  
+	  .rectangle {
+	width: 20px; 
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 0.24rem;
+}
+
+.rectangle:hover::before {
+	content: attr(data-value);
+    position: absolute;
+    /* top: -20px; */
+    background-color: black;
+    color: white;
+    padding: 5px;
+    /* border-radius: 5px; */
+    font-size: 14px;
+    white-space: nowrap;
+    margin-top: -35px;
+    margin-left: -23px;
+	font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+	padding: 4px;
+	border-radius: 0.24rem;
+}
+.label
+{
+	margin-left: 26px;
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    /* padding: 13px; */
+    margin-top: -3px;
+}

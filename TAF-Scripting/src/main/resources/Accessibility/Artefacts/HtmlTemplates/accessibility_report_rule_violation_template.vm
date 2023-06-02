@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <title>Accessibility Track</title>
+    <link rel="stylesheet" href="../styles/bootstrap.css">
+    <link rel="stylesheet" href="../styles/bootstrap-table.css">
+      <link rel="stylesheet" href="../styles/reportstyle.css">
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  </head>
+    
+   
+  </head>
+  <body>
+    <div class="container-fluid zero-padding">
+
+	<header>
+	<figure class="access-logo"></figure>
+	<div class="logo-style">Skriptmate Accessibility Report</div>
+	<div class="row " style="margin:0;padding:1px; background-color: #1ABB9C"> </div>
+	</header>
+  
+  <section class="section-details">
+			<div class="section-margin">
+				<span class="url-icon"> <i class="fas fa-globe"></i>
+				</span> <span class="url-icon-align"><b>URL</b></span> <span
+					class="url-icon-colon">:</span> <span class="url-details"><a
+					href="$Url" target="_blank">$Url</a></span>
+			</div>
+
+			<div class="section-margin">
+				<span class="url-icon"> <i class="fa fa-file"></i>
+				</span> <span class="url-icon-align"><b>Page Reviewed</b></span> <span
+					class="url-icon-colon">:</span> <span class="url-details">$Title</span>
+			</div>
+
+			<div class="section-margin">
+				<span class="url-icon"> <i class="far fa-calendar-alt"></i>
+				</span> <span class="url-icon-align"><b>Reviewed On</b></span> <span
+					class="url-icon-colon">:</span> <span class="url-details">
+					$Date</span>
+			</div>
+		</section>
+      
+      <div class="row spacer_1">
+        <div class="col-md-12 clearfix ">
+          <table id="accessibility-table" data-striped="true" class="table table-striped vertical-table " cellspacing="0" width="100%">			
+            <tr>			
+                <td data-field="ruleDesc" class="heading">Description</td>
+			</tr>
+			<tr>
+			     <td data-field="ruleDesc" class="text-danger text-14">$Description</td>
+		    </tr>
+		    
+		    <tr height="10"></tr>
+			</table>
+			<table id="accessibility-table" data-striped="true" class="table table-striped vertical-table " cellspacing="0" width="100%">	
+            <tr>			
+                 <td data-field="comment" class="col-md-3 text-left heading">Violations</td>
+                 <td data-field="comment" class="col-md-6 text-left heading"> Message</td>
+                 <td data-field="comment" class="col-md-3 text-left heading">Target</td>
+             </tr>
+            #foreach( $violation in $RulesList )
+            <tr class="text-center">
+              <td data-field="ruleViolation" class="text-left text-danger text-14 text-color" valign="top">$violation.violation</td>
+			  <td data-field="ruleViolation" class="text-left text-danger text-14" valign="top">$violation.message</td>
+			  <td data-field="ruleViolation" class="text-left text-danger text-14" valign="top">$violation.target</td>
+            </tr>
+            #end
+            </table>
+        </div>
+      </div>
+    </div>
+	  
+	  <div class="footer">
+        <p class="text-center">Copyright &#169; 2019 UST Global. All rights reserved.</p>
+      </div>
+
+	</body>
+	<script src="../scripts/jquery.js"></script>
+  	<script src="../scripts/bootstrap.js"></script>
+  	<script src="../scripts/bootstrap-table.js"></script>
+</html>

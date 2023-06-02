@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <title>Accessibility Track</title>
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/bootstrap-table.css">
+    <link rel="stylesheet" href="styles/reportstyle.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  </head>
+  <body>
+ 
+
+<div class="container-fluid zero-padding">
+
+	<header>
+	<figure class="access-logo"></figure>
+	<div class="logo-style">Skriptmate Accessibility Report</div>
+	<div class="row " style="margin:0;padding:1px; background-color: #1ABB9C"> </div>
+	</header>
+  
+  <section class="section-details">
+			<div class="section-margin">
+				<span class="url-icon"> <i class="fas fa-globe"></i>
+				</span> <span class="url-icon-align"><b>URL</b></span> <span
+					class="url-icon-colon">:</span> <span class="url-details"><a
+					href="$Url" target="_blank">$Url</a></span>
+			</div>
+
+			<div class="section-margin">
+				<span class="url-icon"> <i class="fa fa-file"></i>
+				</span> <span class="url-icon-align"><b>Page Reviewed</b></span> <span
+					class="url-icon-colon">:</span> <span class="url-details">$Title</span>
+			</div>
+
+			<div class="section-margin">
+				<span class="url-icon"> <i class="far fa-calendar-alt"></i>
+				</span> <span class="url-icon-align"><b>Reviewed On</b></span> <span
+					class="url-icon-colon">:</span> <span class="url-details">
+					$Date</span>
+			</div>
+		</section>
+	  
+      <div class="row spacer_1">
+        <div class="col-md-12 clearfix spacer_2">
+          <table id="accessibility-table" data-striped="true" class="table table-striped table-bordered " cellspacing="0" width="100%">
+            <thead>
+              <tr class="text-center active">
+                <th data-field="508">Standards</th>
+                <th data-field="ruleDesc">Description</th>
+                <th data-field="comment" class="col-md-2">ViolationCount</th>
+              </tr>
+            </thead>
+            <tbody>
+            #foreach( $count in $RulesList )
+             <tr class="text-left">
+               <td data-field="508" class="text-danger text-14">$count.Rule</td>
+               <td data-field="ruleDesc" class="text-danger text-14">$count.Description</td>
+               <td data-field="comment" class=" text-danger text-14"><b>$count.Count</b><a href="$count.InternalReport">  [view]
+               </a></td>
+              </tr>
+              #end
+            </tbody>
+          </table>
+         </div>
+      </div>
+    </div>
+	  
+	  <div class="footer">
+        <p class="text-center">Copyright &#169; 2019 UST Global. All rights reserved.</p>
+      </div>
+
+	</body>
+	<script src="scripts/jquery.js"></script>
+  	<script src="scripts/bootstrap.js"></script>
+  	<script src="scripts/bootstrap-table.js"></script>
+</html>
+</html>

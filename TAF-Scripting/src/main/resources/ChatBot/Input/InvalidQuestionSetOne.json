@@ -1,0 +1,31 @@
+{
+  "Chatbot":{
+  "Scenario":{
+  "Steps":[
+   {
+        "question1": "My name is chatbot?"
+      },
+      {
+        "question2": "Can you please Teach me Mechine Learning"
+      },
+      {
+        "question3": "who is the owner of Skriptmate?"
+      },
+	  {
+        "question4": "you know Features of Skriptmate?"
+      },
+	  {
+        "question5": "what is your best Achievement? "
+      }
+    ]
+  }
+
+  }
+}
+
+
+
+
+ 
+
+ 

@@ -1,0 +1,4 @@
+EventTime,Name,Entity Name,Device Address,Device Host Name,Creator Acconut Domain,Creator Account Name,Created Account Domain,Created Account Name
+11/2/2020 11:42,Windows - User Account Created by an Unprivileged Account,AXA Global CFC,192.168.3.6,DESKTOP-N7EK5LT,DESKTOP-N7EK5LT,TEST_USER_UC14,DESKTOP-N7EK5LT,TEST_USER_UC18
+11/2/2020 13:37,Windows - User Account Created by an Unprivileged Account,AXA Global CFC,192.168.3.6,DESKTOP-N7EK5LT,DESKTOP-N7EK5LT,TEST_USER_UC14,DESKTOP-N7EK5LT,TEST_USER_UC18
+11/2/2020 13:41,Windows - User Account Created by an Unprivileged Account,AXA Global CFC,192.168.3.6,DESKTOP-N7EK5LT,DESKTOP-N7EK5LT,TEST_USER_UC14,DESKTOP-N7EK5LT,TEST_USER_UC18

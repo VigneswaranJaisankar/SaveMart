@@ -1,0 +1,31 @@
+{
+  "Chatbot":{
+  "Scenario":{
+  "Steps":[
+      {
+        "question1": "Who is CEO of UST-Global"
+      },
+      {
+        "question2": "Who is Quality engneering service head?"
+      },
+      {
+        "question3": "Who is the Founder of Ust?"
+      },
+	  {
+        "question4": "Do you know Features of Skriptmate?"
+      },
+	  {
+        "question5": "Skriptmate is Tool-AgnosticFramework"
+      }
+    ]
+  }
+
+  }
+}
+
+
+
+
+ 
+
+ 

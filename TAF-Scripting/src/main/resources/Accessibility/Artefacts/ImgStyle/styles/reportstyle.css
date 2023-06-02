@@ -1,0 +1,156 @@
+body {
+	background: #f1f4f8;
+	margin:0px;
+}
+th {
+	background-color: #2a3f54;
+	color : #ffffff;
+}
+td {
+	
+	color : #2a3f54 !important;
+}
+header {
+	background: #fff;
+	padding: 0px;
+}
+.zero-padding {
+	/* padding:0px; */
+}
+.iconstyle {
+	color: #1ABB9C;
+	font-size: 34px;
+	display: inline-block;
+}
+.logo-style {
+	display: inline-block;
+	margin-left: 10px;
+	font-size: 20px;
+	vertical-align: middle;
+}
+.section-details {
+	padding: 25px;
+}
+.url-icon {
+	display: inline-block;
+	color: #1ABB9C;
+	position: absolute;
+}
+.url-details {
+	word-wrap:break-word;
+	display: inline-block;
+	width: 50%;
+    position: relative;
+   /*  padding-right: 10px; */
+    margin-left: 254px;
+    padding: 0px; 
+   font-weight: bold;
+}
+
+.overall-url-details {
+	word-wrap:break-word;
+	display: inline-block;
+	width: 50%;
+    position: relative;
+   /*  padding-right: 10px; */
+    margin-left: 140px;
+    padding: 0px; 
+   font-weight: bold;
+}
+.url-icon-align{
+	position: absolute;
+    margin-left: 25px;
+}
+
+.url-icon-colon{
+	position: absolute;
+    margin-left: 211px;
+    font-weight: bold;
+}
+.overall-url-icon-colon{
+	position: absolute;
+    margin-left: 120px;
+    font-weight: bold;
+}
+.tags-details{
+	vertical-align: middle;
+	width: 66%;
+	display: inline-block;
+}
+.section-margin {
+	margin-top: 15px;
+}
+.overall-section-margin {
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+.report-margin {
+	margin-left: 10px;
+	color: white !important;
+}
+.panel-heading {
+	background: #546371 !important;
+}
+.report-summary {
+	margin-left: 10px;
+	font-size: 14px;
+	color: white;
+}
+.glyphicon{
+	color: #1ABB9C;
+}
+.round-div {
+	background: #1ABB9C;
+	padding: 6px;
+	border-radius: 15px;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 14px;
+	color: white;
+	display: inline;
+}
+.desc-margin {
+	margin-left: 10px;
+}
+.panel-report{
+	font-size: 10px;
+}
+.header-modify{
+	    padding: 8px;
+}
+.small-modify{
+	line-height:20px !important;
+}
+.table-striped > tbody > tr:nth-of-type(n+1) {
+    background-color: #fff;
+}
+
+.border-left{border-left:1px solid #ccc}
+
+.table > thead > tr.active > th, .table > tbody > tr.active > th, .table > tfoot > tr.active > th{ background:#2a3f54!important; color:#fff}
+.table > tbody > tr > td{ padding:1px 5px 6px 5px !important}
+.text-danger{ font-size:18px; font-weight:bold}
+.text-14{ font-size:14px; font-weight:normal}
+.table > thead > tr > td{ padding:0 8px 6px!important}
+.view-icon{background: url(../images/view-icon.png) no-repeat top left; width:32px; height:32px; display:inline-block}
+.link-icon{background: url(../images/link-icon.png) no-repeat top left; width:32px; height:32px; display:inline-block}
+.calender-icon{background: url(../images/calender-icon.png) no-repeat top left; width:32px; height:32px; display:inline-block}
+h5 label{position: relative;
+    top: -10px; left:24px}
+.text-18{ font-size:18px; }
+.text-12{ font-size:12px; }
+.heading {background:#2a3f54!important; color:#fff !important; padding:5px!important; font-weight:bold}
+.table.vertical-table > tbody > tr > td {
+    padding:5px!important;
+}
+
+.access-logo{
+background: url(../images/Skriptmate.png);
+background-repeat: round;
+display:block; 
+height:35px;
+display:inline-block;
+width: 35px;
+margin:5px;
+vertical-align: middle;
+   } 

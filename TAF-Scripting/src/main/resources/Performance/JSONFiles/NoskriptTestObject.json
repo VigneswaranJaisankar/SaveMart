@@ -1,0 +1,12 @@
+{
+  "filters": [
+    
+  ],
+  "filterBy": "",
+  "pageNo": 0,
+  "pageSize": 50,
+  "sort": {
+    "name": "updatedOn",
+    "type": "desc"
+  }
+}

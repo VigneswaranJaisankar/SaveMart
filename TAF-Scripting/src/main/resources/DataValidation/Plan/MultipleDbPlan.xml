@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean class="org.diffkit.diff.conf.DKMagicPlan" id="plan">
+		<property name="lhsDBTableName" value="GENERALDATA"/>
+		<property name="rhsDBTableName" value="GENERALDATA"/>
+		<property name="lhsDBConnectionInfo" ref="rhsDBConnectionInfo"/>
+		<property name="rhsDBConnectionInfo" ref="lhsDBConnectionInfo"/>
+		
+		<property name="sinkFilePath" value="D:\SkriptmateNewWorkSpace\ScriptedRepo\TAF-Scripting\SkriptmateReport\DataValidation\20200706_134128\DbOutput_06_07_2020_01_41_28_4128_PM.txt"/>
+	</bean>
+
+</beans>

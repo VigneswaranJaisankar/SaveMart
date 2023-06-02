@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration  packages="com.epam.ta.reportportal.log4j.appender" monitorinterval="30" status="info" strict="true">
+    <Properties>
+        <Property name="filename">SkriptmateLogs/Skriptmate.log</Property>
+    </Properties>
+	<Appenders>
+		<Appender type="Console" name="Console">
+			<Layout type="PatternLayout" pattern="%d %p [%t] %m%n" />
+		</Appender>
+		<Appender type="Console" name="FLOW">
+			<Layout type="PatternLayout" pattern="%C{1}.%M %m %ex%n" />
+		</Appender>
+		<Appender type="File" name="File" fileName="${filename}">
+			<Layout type="PatternLayout" pattern="%d %p %C{1.} [%t] %m%n" />
+		</Appender>
+	<Appender type="ReportPortalLog4j2Appender" name="ReportPortalAppender">
+		 <PatternLayout pattern="%d [%p] %c{1} - %m%n" />
+	</Appender>
+	</Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="File" />
+            <AppenderRef ref="Console" />
+              <AppenderRef ref="ReportPortalAppender"/> 
+            <!-- Use FLOW to trace down exact method sending the msg -->
+            <!-- <AppenderRef ref="FLOW" /> -->
+        </Root>
+         <Logger name="com.epam.reportportal.service" level="WARN" additivity="true">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ReportPortalAppender"/>
+        </Logger>
+         <Logger name="com.epam.reportportal" level="DEBUG" additivity="true">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ReportPortalAppender"/>
+        </Logger>
+        <Logger name="com.epam.reportportal.utils" level="WARN" additivity="true">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ReportPortalAppender"/>
+        </Logger>
+    </Loggers>
+</Configuration>

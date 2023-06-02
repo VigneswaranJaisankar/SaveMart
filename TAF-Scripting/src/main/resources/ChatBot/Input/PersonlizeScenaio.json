@@ -1,0 +1,32 @@
+{
+  "Chatbot":{
+  "Scenario":{
+  "Steps":[
+   {
+        "question1": "hi",
+        "answer1": "You can share your feelings with me."
+      },
+      {
+        "question2": "my name is abhilash",
+        "answer2": "How are you feeling today"
+      },
+      {
+        "question3": "iam good",
+        "answer3": "When you think positive, good things happen."
+      },
+	  {
+        "question4": "thank you. how about you?",
+        "answer4": "Thanks for asking."
+      }
+    ]
+  }
+
+  }
+}
+
+
+
+
+ 
+
+ 

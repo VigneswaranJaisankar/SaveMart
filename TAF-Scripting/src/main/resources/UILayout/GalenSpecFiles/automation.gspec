@@ -1,0 +1,26 @@
+@objects
+    header              id      header
+    header_logo      id      header_logo
+    footer               id      footer
+    header-container       #page > div.header-container
+    columns-container     #page > div.columns-container
+    footer-container        #page > div.footer-container
+
+= Main section =
+    header:
+        height 100 to 200px
+
+    footer:
+        height 100 to 200px
+
+    header_logo:
+        inside header
+
+@groups
+    (skeleton_elements, mainframe)  header-container, columns-container
+    mainframe                       footer-container
+
+= Mainframe =
+    @forEach [&mainframe] as item
+        ${item}:
+            inside screen 0px left right

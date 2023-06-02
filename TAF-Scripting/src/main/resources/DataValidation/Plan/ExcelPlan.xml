@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean class="org.diffkit.diff.conf.DKMagicPlan" id="plan">
+		<property name="lhsSpreadSheetFilePath" value="D:\BCBSA Demo\ScriptedRepo\TAF-Scripting/src/main/resources/DataValidation/Input/AxaCompare1.xlsx"/>
+		<property name="rhsSpreadSheetFilePath" value="D:\BCBSA Demo\ScriptedRepo\TAF-Scripting/src/main/resources/DataValidation/Input/AxaCompare2.xlsx"/>
+		<property name="hasHeader" value="true"/>
+		<property name="sinkFilePath" value="D:\BCBSA Demo\ScriptedRepo\TAF-Scripting/SkriptmateReport/DataValidation/20210510_145220\Compare_AxaCompare1_AxaCompare2\ExcelOutput_10_05_2021_02_52_27_5227_PM.txt"/>
+	</bean>
+</beans>

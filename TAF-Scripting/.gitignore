@@ -1,0 +1,13 @@
+target
+.settings
+.project
+.idea
+.iml
+.classpath
+SkriptmateReport
+allure-results
+clientperf-results
+healing-results
+SkriptmateLogs
+SkriptmateLogs/Skriptmate.log
+test-output

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean class="org.diffkit.diff.conf.DKMagicPlan" id="plan">
+      <property name="lhsFilePath" value="D:\BCBSA Demo\ScriptedRepo\TAF-Scripting/src/main/resources/DataValidation/Input/UC19_report.csv"/>
+      <property name="rhsFilePath" value="D:\BCBSA Demo\ScriptedRepo\TAF-Scripting/src/main/resources/DataValidation/Input/UC14_report.csv"/>
+      <property name="keyColumnNames">
+         <list>
+            <value>Name</value>
+         </list>
+      </property>
+		<property name="sinkFilePath" value="D:\BCBSA Demo\ScriptedRepo\TAF-Scripting/SkriptmateReport/DataValidation/20210505_112137\ExcelOutput_05_05_2021_11_21_37_2137_AM.txt"/>
+	</bean>
+
+</beans>

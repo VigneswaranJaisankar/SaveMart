@@ -64,6 +64,8 @@ public class ChromeSettings {
 			chromeOptionsObj.addArguments("--proxy-server=http://" + proxy);
 		}
 		chromeOptionsObj.addArguments(chromeOptions);
+		chromeOptionsObj.addArguments("--disable-blink-features=AutomationControlled");
+		chromeOptionsObj.setExperimentalOption("useAutomationExtension", false);
 		chromeOptionsObj.setPageLoadStrategy(PageLoadStrategy.NONE);
 		chromeOptionsObj.setExperimentalOption("prefs", chromePrefs);
 		
