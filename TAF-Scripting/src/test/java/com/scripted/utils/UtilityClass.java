@@ -176,14 +176,10 @@ public class UtilityClass {
 		    Calendar cal = Calendar.getInstance();
 		    cal.setTime(objDate);
 		    Calendar cal1 = Calendar.getInstance();
-		    cal1.setTime(date1);
-		 
+		    cal1.setTime(date1);	 
 		    int expirydate = cal1.get(Calendar.DATE);
-		    int currentdate = cal.get(Calendar.DATE);
-		    
-		    
+		    int currentdate = cal.get(Calendar.DATE);	    
 		    if(expirydate> currentdate){
-		    	System.out.println("Expiry date is greater than current Date");
 		    	value =true;
 		    	}
 		    	else{

@@ -103,7 +103,7 @@ public class OfferPageSM {
 	}
 	
 	public void verifyAvailable_offers_foreachcategory() throws InterruptedException, ParseException {
-	
+		WebHandlers.scrollBy(0, 150);
 		List<WebElement> categoryoffers = BrowserDriver.getDriver()
 				.findElements(By.xpath("//*[@class='MuiListItemText-root css-1hqjvbr']/span"));
 		for (int i = 0; i < categoryoffers.size(); i++) {
