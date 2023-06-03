@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
@@ -75,6 +76,14 @@ public class UtilityClass {
 	
 	public String currentDate() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+
+		Date date = new Date();
+
+		return dateFormat.format(date);
+	}
+	
+	public String currentDateformatDate() {
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
 		Date date = new Date();
 
@@ -147,5 +156,42 @@ public class UtilityClass {
 		return error;
 
 	}
-
-}
+	
+	public String dateExpiryFormat(String value) {
+		String expiry1 = value;
+		System.out.println("valueeeee" + value);
+		SimpleDateFormat date1 =new SimpleDateFormat("MM-dd-yyyy");
+	    Calendar cal1 = Calendar.getInstance();
+	    int expiryyear = cal1.get(Calendar.YEAR);  
+	    String expirydate = expiry1 +"/"+ expiryyear;
+	    return expirydate.replaceAll("/", "-");
+	}
+	
+	public Boolean dateVerification(String date) throws ParseException {
+		Boolean value =false;
+		Date objDate = new Date();
+		String str=date;
+	//	String str="12-31-2023";
+		    Date date1 =new SimpleDateFormat("MM-dd-yyyy").parse(str);
+		    Calendar cal = Calendar.getInstance();
+		    cal.setTime(objDate);
+		    Calendar cal1 = Calendar.getInstance();
+		    cal1.setTime(date1);
+		 
+		    int expirydate = cal1.get(Calendar.DATE);
+		    int currentdate = cal.get(Calendar.DATE);
+		    
+		    
+		    if(expirydate> currentdate){
+		    	System.out.println("Expiry date is greater than current Date");
+		    	value =true;
+		    	}
+		    	else{
+		    	System.out.println("Expiry date is not greater than current Date");
+		    	value =false;
+		    	}
+			
+		    return value;
+	     }
+	    
+	}

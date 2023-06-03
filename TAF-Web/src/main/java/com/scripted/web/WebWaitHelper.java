@@ -339,6 +339,12 @@ public class WebWaitHelper {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
+	public static void waitforelemnettobepresent(WebElement element , long sec) {
+		By byEle = WebHandlers.webElementToBy(element);
+		WebDriverWait wait = new WebDriverWait(BrowserDriver.getDriver(), sec);
+		wait.until(ExpectedConditions.presenceOfElementLocated(byEle));
+	}
+	
 	public static void waitforpageload() {
 		JavascriptExecutor js = (JavascriptExecutor)BrowserDriver.getDriver();
 		js.executeScript("return document.readyState").toString().equals("complete");
