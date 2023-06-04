@@ -99,16 +99,7 @@ public class PcloudyDeviceSettings {
 	}
 
 	public AndroidDriver<WebElement> getConnectionPcloudyAndroidWeb(Properties mobConfigProp) {
-		try {
-			if (!mobConfigProp.getProperty("https.proxyHost").isEmpty()
-					&& !mobConfigProp.getProperty("https.proxyPort").isEmpty()) {
-				proxyHost = mobConfigProp.getProperty("https.proxyHost");
-				proxyPort = mobConfigProp.getProperty("https.proxyPort");
-
-				// Override SSL certificate for pCloudy
-				getRestTemplate();
-			}
-			
+		try {	
 			capability.setCapability("pCloudy_Username", mobConfigProp.getProperty("Username"));
 			capability.setCapability("pCloudy_ApiKey", mobConfigProp.getProperty("ApiKey"));
 			capability.setCapability("pCloudy_DurationInMinutes", mobConfigProp.getProperty("DurationInMinutes"));

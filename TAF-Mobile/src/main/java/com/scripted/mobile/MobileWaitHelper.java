@@ -22,6 +22,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.google.common.base.Function;
+
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -291,5 +293,11 @@ public class MobileWaitHelper {
 
 	public static Actions getAction() {
 		return new Actions(MobileDriverSettings.getCurrentDriver());
+	}
+	
+	public static void waitforelemnettobepresent(MobileElement element , long sec) {
+		By byEle = MobileHandlers.mobileElementBy(element);
+		WebDriverWait wait = new WebDriverWait(MobileDriverSettings.getCurrentDriver(), sec);
+		wait.until(ExpectedConditions.presenceOfElementLocated(byEle));
 	}
 }

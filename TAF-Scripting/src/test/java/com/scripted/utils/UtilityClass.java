@@ -179,7 +179,7 @@ public class UtilityClass {
 		    cal1.setTime(date1);	 
 		    int expirydate = cal1.get(Calendar.DATE);
 		    int currentdate = cal.get(Calendar.DATE);	    
-		    if(expirydate> currentdate){
+		    if(expirydate >= currentdate){
 		    	value =true;
 		    	}
 		    	else{
